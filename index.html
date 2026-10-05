@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villava Döner Kebab & Pizzería</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --caramel-dark: #3D2214;
+            --caramel-primary: #8C4A27;
+            --caramel-medium: #C87D46;
+            --caramel-light: #E8A87C;
+            --caramel-soft: #F9F1E8;
+            --accent-gold: #DAA520;
+            --text-main: #2C1810;
+            --text-muted: #6B5B52;
+            --bg-white: #FFFFFF;
+            --shadow-sm: 0 4px 6px -1px rgba(61, 34, 20, 0.05);
+            --shadow-md: 0 10px 15px -3px rgba(61, 34, 20, 0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(61, 34, 20, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--caramel-soft);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- Header Topbar & Navbar --- */
+        .topbar {
+            background-color: var(--caramel-dark);
+            color: #E8A87C;
+            padding: 8px 5%;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .topbar-info {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .topbar-info i {
+            color: var(--caramel-medium);
+            margin-right: 6px;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--caramel-primary), var(--caramel-dark));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 10px rgba(140, 74, 39, 0.3);
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: var(--caramel-dark);
+            line-height: 1.1;
+        }
+
+        .logo-text span {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--caramel-medium);
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--caramel-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: var(--caramel-primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--caramel-primary), var(--caramel-dark));
+            color: white;
+            box-shadow: 0 4px 12px rgba(140, 74, 39, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(140, 74, 39, 0.35);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--caramel-primary);
+            color: var(--caramel-primary);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--caramel-primary);
+            color: white;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 80px 5% 60px;
+            background: linear-gradient(135deg, #3D2214 0%, #59301B 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(200, 125, 70, 0.15) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content h2 {
+            font-size: 3.2rem;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            color: #FFF;
+        }
+
+        .hero-content h2 span {
+            color: var(--caramel-light);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #E0D0C5;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .hero-badge {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-badge i {
+            color: var(--caramel-light);
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+
+        .promo-tag {
+            background: var(--accent-gold);
+            color: var(--caramel-dark);
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        /* --- Section Header --- */
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-size: 2.3rem;
+            color: var(--caramel-dark);
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .section-header::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--caramel-medium);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- RECOMMENDATIONS SECTION --- */
+        .recommendations {
+            padding: 70px 5%;
+            background-color: var(--bg-white);
+        }
+
+        .rec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .rec-card {
+            background: var(--caramel-soft);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid rgba(200, 125, 70, 0.15);
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .rec-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--caramel-medium);
+        }
+
+        .rec-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--caramel-primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .rec-card h3 {
+            font-size: 1.3rem;
+            color: var(--caramel-dark);
+            margin-bottom: 8px;
+        }
+
+        .rec-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .rec-price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed rgba(107, 91, 82, 0.2);
+        }
+
+        .rec-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--caramel-primary);
+        }
+
+        /* --- PROMOTIONS SECTION --- */
+        .promotions {
+            padding: 60px 5%;
+            background: var(--caramel-soft);
+        }
+
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .promo-banner {
+            background: linear-gradient(135deg, var(--caramel-primary), var(--caramel-dark));
+            color: white;
+            padding: 25px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .promo-icon {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+        }
+
+        .promo-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .promo-info p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        /* --- MENU SECTION --- */
+        .menu-section {
+            padding: 70px 5%;
+            background-color: var(--bg-white);
+        }
+
+        .menu-categories {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 15px;
+            margin-bottom: 35px;
+            scrollbar-width: thin;
+        }
+
+        .cat-btn {
+            padding: 10px 20px;
+            border-radius: 25px;
+            background-color: var(--caramel-soft);
+            color: var(--caramel-dark);
+            border: 1px solid rgba(200, 125, 70, 0.2);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: var(--transition);
+        }
+
+        .cat-btn.active, .cat-btn:hover {
+            background-color: var(--caramel-primary);
+            color: white;
+            border-color: var(--caramel-primary);
+        }
+
+        .menu-category-title {
+            font-size: 1.8rem;
+            color: var(--caramel-dark);
+            margin: 30px 0 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--caramel-soft);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .menu-category-title i {
+            color: var(--caramel-medium);
+        }
+
+        .menu-items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-item {
+            background: var(--bg-white);
+            border: 1px solid #EFEAE6;
+            border-radius: 12px;
+            padding: 18px;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .menu-item:hover {
+            border-color: var(--caramel-light);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .menu-item-title {
+            font-size: 1.1rem;
+            color: var(--caramel-dark);
+            font-weight: 700;
+        }
+
+        .menu-item-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .menu-item-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--caramel-primary);
+        }
+
+        /* Price table for multi-size options */
+        .price-table {
+            width: 100%;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            border-collapse: collapse;
+        }
+
+        .price-table th, .price-table td {
+            padding: 4px 8px;
+            text-align: center;
+            border: 1px solid #EFEAE6;
+        }
+
+        .price-table th {
+            background-color: var(--caramel-soft);
+            color: var(--caramel-dark);
+        }
+
+        /* --- INFO & CONTACT SECTION --- */
+        .info-section {
+            padding: 70px 5%;
+            background-color: var(--caramel-soft);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .info-box h3 {
+            font-size: 1.5rem;
+            color: var(--caramel-dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-box h3 i {
+            color: var(--caramel-primary);
+        }
+
+        .schedule-list {
+            list-style: none;
+        }
+
+        .schedule-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed rgba(107, 91, 82, 0.2);
+            font-size: 0.9rem;
+        }
+
+        .contact-details p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.95rem;
+        }
+
+        .contact-details i {
+            color: var(--caramel-primary);
+            margin-top: 4px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--caramel-dark);
+            color: #D3C4BC;
+            padding: 40px 5% 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            margin-bottom: 25px;
+        }
+
+        .footer-logo {
+            font-size: 1.6rem;
+            color: white;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 10px;
+        }
+
+        .footer-copy {
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            color: #A8958B;
+        }
+
+        /* Floating Call Button for Mobile */
+        .floating-call {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
+            text-decoration: none;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: 40px;
+            }
+            .hero-content h2 {
+                font-size: 2.3rem;
+            }
+            .hero-content p {
+                margin: 0 auto 30px;
+            }
+            .hero-badges {
+                justify-content: center;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+        <div class="topbar-info">
+            <span><i class="fa-solid fa-location-dot"></i> c/ Karrobide, 21. 31610 Villava (Navarra)</span>
+            <span><i class="fa-solid fa-clock"></i> Lunes: 18:00 - 00:00 | Mar-Dom: Abierto</span>
+        </div>
+        <div class="topbar-info">
+            <span><i class="fa-solid fa-phone"></i> Pedidos: 948 029 045 / 617 673 946</span>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="#" class="brand-logo">
+            <div class="logo-icon"><i class="fa-solid fa-utensils"></i></div>
+            <div class="logo-text">
+                <h1>Villava Doner Kebab</h1>
+                <span>Pizzería & Comida India</span>
+            </div>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#recomendaciones">Recomendaciones</a></li>
+            <li><a href="#ofertas">Ofertas Especiales</a></li>
+            <li><a href="#menu">Menú Completo</a></li>
+            <li><a href="#horario">Horario & Contacto</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="tel:948029045" class="btn btn-primary"><i class="fa-solid fa-phone"></i> LLAMAR AHORA</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badges">
+                <span class="hero-badge"><i class="fa-solid fa-motorcycle"></i> Servicio a Domicilio 1€</span>
+                <span class="hero-badge"><i class="fa-solid fa-shield-halved"></i> Calidad Garantizada</span>
+            </div>
+            <h2>Sabor Auténtico en <span>Villava</span></h2>
+            <p>Los mejores Döner Kebabs, Pizzas recién horneadas, Pastas artesanales y Especialidades de Comida India.</p>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <a href="#menu" class="btn btn-primary"><i class="fa-solid fa-book-open"></i> Ver Menú Completo</a>
+                <a href="#ofertas" class="btn btn-outline" style="color: white; border-color: white;"><i class="fa-solid fa-percent"></i> Ver Promociones</a>
+            </div>
+        </div>
+
+        <div class="hero-card">
+            <span class="promo-tag">¡Oferta Destacada!</span>
+            <h3 style="font-size: 1.6rem; color: white; margin-bottom: 10px;">Menú Kebab / Durum</h3>
+            <p style="color: #E8A87C; font-size: 0.95rem; margin-bottom: 20px;">Incluye Patatas Fritas + 1 Lata de Bebida</p>
+            <div style="font-size: 2.2rem; font-weight: 800; color: #DAA520; margin-bottom: 15px;">Desde 6,50€</div>
+            <p style="font-size: 0.8rem; color: #D3C4BC;">*Servicio a domicilio disponible (Pedido mín. 10€)</p>
+        </div>
+    </section>
+
+    <!-- NUESTRAS RECOMENDACIONES -->
+    <section id="recomendaciones" class="recommendations">
+        <div class="section-header">
+            <h2>Nuestras Recomendaciones</h2>
+            <p>Los platos favoritos y más recomendados por nuestros clientes habituales</p>
+        </div>
+
+        <div class="rec-grid">
+            <div class="rec-card">
+                <span class="rec-badge">Especialidad</span>
+                <div>
+                    <h3>Lahmacun Especial</h3>
+                    <p>La estrella de nuestras Pizzas Turcas, enrollada y rellena de ensalada, carne de ternera o pollo y nuestras salsas caseras.</p>
+                </div>
+                <div class="rec-price-row">
+                    <span class="rec-price">5,00€</span>
+                    <a href="tel:948029045" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.8rem;">Pedir</a>
+                </div>
+            </div>
+
+            <div class="rec-card">
+                <span class="rec-badge">Para 2 Personas</span>
+                <div>
+                    <h3>Plato Degustación</h3>
+                    <p>Carne de ternera y pollo, falafel, ensalada, patatas, 2 panes pita y queso especial.</p>
+                </div>
+                <div class="rec-price-row">
+                    <span class="rec-price">12,50€</span>
+                    <a href="tel:948029045" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.8rem;">Pedir</a>
+                </div>
+            </div>
+
+            <div class="rec-card">
+                <span class="rec-badge">Top Pizza</span>
+                <div>
+                    <h3>Pizza Pamplona</h3>
+                    <p>Masa crujiente con Carne Kebab de ternera, pollo, jamón y exquisita mezcla de quesos.</p>
+                </div>
+                <div class="rec-price-row">
+                    <span class="rec-price">Desde 9,50€</span>
+                    <a href="tel:948029045" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.8rem;">Pedir</a>
+                </div>
+            </div>
+
+            <div class="rec-card">
+                <span class="rec-badge">Plato Indio</span>
+                <div>
+                    <h3>Chicken Tikka Masala</h3>
+                    <p>Tiernos trozos de pollo cocinados con deliciosas especias orientales seleccionadas. Incluye arroz Basmati o Pan Chapati.</p>
+                </div>
+                <div class="rec-price-row">
+                    <span class="rec-price">12,00€</span>
+                    <a href="tel:948029045" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.8rem;">Pedir</a>
+                </div>
+            </div>
+
+            <div class="rec-card">
+                <span class="rec-badge">Favorito</span>
+                <div>
+                    <h3>Hamburguesa XXL Completa</h3>
+                    <p>Carne de hamburguesa extra grande con Bacon, Huevo cocido/frito, queso, lechuga y tomate.</p>
+                </div>
+                <div class="rec-price-row">
+                    <span class="rec-price">5,50€</span>
+                    <a href="tel:948029045" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.8rem;">Pedir</a>
+                </div>
+            </div>
+
+            <div class="rec-card">
+                <span class="rec-badge">Especialidad</span>
+                <div>
+                    <h3>Olla de Pollo Gratinada</h3>
+                    <p>Pechuga de pollo, salsa de tomate, nata y patatas, gratinadas con abundante queso derretido.</p>
+                </div>
+                <div class="rec-price-row">
+                    <span class="rec-price">12,00€</span>
+                    <a href="tel:948029045" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.8rem;">Pedir</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROMOTIONS SECTION -->
+    <section id="ofertas" class="promotions">
+        <div class="section-header">
+            <h2>Promociones y Ofertas Especiales</h2>
+            <p>Aprovecha nuestros descuentos diarios y menús combo</p>
+        </div>
+
+        <div class="promo-grid">
+            <div class="promo-banner">
+                <div class="promo-icon"><i class="fa-solid fa-gift"></i></div>
+                <div class="promo-info">
+                    <h4>PROMO 3+1 EN KEBABS</h4>
+                    <p>Por la compra de 3 Kebabs o Durum, ¡te regalamos 1 Gratis! (De lunes a jueves, excepto festivos).</p>
+                </div>
+            </div>
+
+            <div class="promo-banner">
+                <div class="promo-icon"><i class="fa-solid fa-pizza-slice"></i></div>
+                <div class="promo-info">
+                    <h4>2x1 EN PIZZAS</h4>
+                    <p>Martes y Miércoles en Pizzas Normales. Lunes y Jueves en Pizzas Americanas.</p>
+                </div>
+            </div>
+
+            <div class="promo-banner">
+                <div class="promo-icon"><i class="fa-solid fa-utensils"></i></div>
+                <div class="promo-info">
+                    <h4>MENÚ INDIA PARA 2</h4>
+                    <p>Elige 2 platos de pollo + 2 arroz/chapati + 2 patatas + 2 latas por solo 27,00€.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU SECTION -->
+    <section id="menu" class="menu-section">
+        <div class="section-header">
+            <h2>Nuestro Menú Completo</h2>
+            <p>Selecciona una categoría para explorar nuestros exquisitos platos</p>
+        </div>
+
+        <div class="menu-categories">
+            <button class="cat-btn active" onclick="filterCategory('doner')">Döner & Kebab</button>
+            <button class="cat-btn" onclick="filterCategory('pizzas')">Pizzas</button>
+            <button class="cat-btn" onclick="filterCategory('ofertas-menus')">Menús Oferta</button>
+            <button class="cat-btn" onclick="filterCategory('pastas')">Pastas</button>
+            <button class="cat-btn" onclick="filterCategory('india')">Comida India</button>
+            <button class="cat-btn" onclick="filterCategory('hamburguesas')">Hamburguesas</button>
+            <button class="cat-btn" onclick="filterCategory('fritos')">Aperitivos & Fritos</button>
+            <button class="cat-btn" onclick="filterCategory('ensaladas')">Ensaladas</button>
+            <button class="cat-btn" onclick="filterCategory('bebidas')">Bebidas & Vinos</button>
+        </div>
+
+        <!-- CATEGORY: DONER & KEBAB -->
+        <div id="cat-doner" class="menu-cat-block">
+            <h3 class="menu-category-title"><i class="fa-solid fa-stroopwafel"></i> Döner Kebab & Especialidades</h3>
+            <div class="menu-items-grid">
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Döner Kebab Ternera</span>
+                            <span class="menu-item-price">4,50€</span>
+                        </div>
+                        <p class="menu-item-desc">Carne de ternera jugosa con ensalada fresca servida en pan pita caliente.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Döner Kebab Mixto</span>
+                            <span class="menu-item-price">5,00€</span>
+                        </div>
+                        <p class="menu-item-desc">Mezcla de carne de ternera y pollo con ensalada en pan pita.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Döner Especial Sólo Carne</span>
+                            <span class="menu-item-price">5,50€</span>
+                        </div>
+                        <p class="menu-item-desc">Relleno exclusivo con abundante carne de ternera o pollo.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Rollo Dürum Normal</span>
+                            <span class="menu-item-price">5,00€</span>
+                        </div>
+                        <p class="menu-item-desc">Carne de ternera o pollo con ensalada enrollada en pan plano turco.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Rollo Dürum Mixto</span>
+                            <span class="menu-item-price">5,50€</span>
+                        </div>
+                        <p class="menu-item-desc">Combinación de ternera y pollo con ensalada en tortilla caliente.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Kebab Plato</span>
+                            <span class="menu-item-price">7,50€</span>
+                        </div>
+                        <p class="menu-item-desc">Servido en plato con carne de ternera o pollo, ensalada, patatas y salsas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORY: PIZZAS -->
+        <div id="cat-pizzas" class="menu-cat-block" style="margin-top: 40px;">
+            <h3 class="menu-category-title"><i class="fa-solid fa-pizza-slice"></i> Pizzas Artesanales (Queso Gouda o Mozzarella)</h3>
+            <p style="margin-bottom: 20px; font-size: 0.9rem; color: var(--text-muted);">Tamaños disponibles: Mediana (26cm) | Grande (32cm) | Familiar (33x46cm) | Cuadrada (40x60cm)</p>
+
+            <div class="menu-items-grid">
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Pizza Margarita</span>
+                        </div>
+                        <p class="menu-item-desc">Salsa de tomate casera y abundante queso gouda gratinado.</p>
+                    </div>
+                    <table class="price-table">
+                        <tr><th>Mediana</th><th>Grande</th><th>Familiar</th><th>Cuadrada</th></tr>
+                        <tr><td>8,00€</td><td>9,00€</td><td>15,00€</td><td>18,00€</td></tr>
+                    </table>
+                </div>
+
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Pizza 4 Estaciones</span>
+                        </div>
+                        <p class="menu-item-desc">Salami, jamón york, pimiento y champiñones frescos.</p>
+                    </div>
+                    <table class="price-table">
+                        <tr><th>Mediana</th><th>Grande</th><th>Familiar</th><th>Cuadrada</th></tr>
+                        <tr><td>9,00€</td><td>10,00€</td><td>19,00€</td><td>23,50€</td></tr>
+                    </table>
+                </div>
+
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Pizza Prosciutto</span>
+                        </div>
+                        <p class="menu-item-desc">Clásica combinación de salsa de tomate, queso y sabroso jamón york.</p>
+                    </div>
+                    <table class="price-table">
+                        <tr><th>Mediana</th><th>Grande</th><th>Familiar</th><th>Cuadrada</th></tr>
+                        <tr><td>8,00€</td><td>9,00€</td><td>16,00€</td><td>20,00€</td></tr>
+                    </table>
+                </div>
+
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Pizza 5 Formaggi</span>
+                        </div>
+                        <p class="menu-item-desc">Exquisita selección de 5 clases de quesos diferentes fundidos.</p>
+                    </div>
+                    <table class="price-table">
+                        <tr><th>Mediana</th><th>Grande</th><th>Familiar</th><th>Cuadrada</th></tr>
+                        <tr><td>9,50€</td><td>10,50€</td><td>20,00€</td><td>24,00€</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORY: COMBOS / OFERTAS MENUS -->
+        <div id="cat-ofertas-menus" class="menu-cat-block" style="margin-top: 40px;">
+            <h3 class="menu-category-title"><i class="fa-solid fa-box-open"></i> Menús de Oferta y Combos</h3>
+            <div class="menu-items-grid">
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Menú Kebab</span>
+                            <span class="menu-item-price">6,50€</span>
+                        </div>
+                        <p class="menu-item-desc">Döner Kebab en pan + Patatas Fritas + 1 Lata de bebida a elegir.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Menú Dürum</span>
+                            <span class="menu-item-price">7,50€</span>
+                        </div>
+                        <p class="menu-item-desc">Rollo Dürum normal + Patatas Fritas + 1 Lata de bebida.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Menú 1 (2 Pizzas Med)</span>
+                            <span class="menu-item-price">21,00€</span>
+                        </div>
+                        <p class="menu-item-desc">2 Pizzas Medianas + 2 Ensaladas pequeñas o patatas + Botella 1L Cola o 2 latas.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Menú 2 (2 Pizzas Gde)</span>
+                            <span class="menu-item-price">23,00€</span>
+                        </div>
+                        <p class="menu-item-desc">2 Pizzas Grandes + 2 Ensaladas pequeñas o patatas + Botella 1L Cola/Cerveza.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORY: COMIDA INDIA -->
+        <div id="cat-india" class="menu-cat-block" style="margin-top: 40px;">
+            <h3 class="menu-category-title"><i class="fa-solid fa-bowl-food"></i> Comida India Tradicional</h3>
+            <p style="margin-bottom: 20px; font-size: 0.9rem; color: var(--text-muted);">Todos los platos de pollo se sirven con Arroz Basmati o Pan Chapati.</p>
+
+            <div class="menu-items-grid">
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">130 Chicken Korma</span>
+                            <span class="menu-item-price">12,00€</span>
+                        </div>
+                        <p class="menu-item-desc">Pollo suave cocinado con curry, almendras, coco, cardamomo y nata.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Pollo con Mantequilla (Butter Chicken)</span>
+                            <span class="menu-item-price">12,00€</span>
+                        </div>
+                        <p class="menu-item-desc">Pollo en salsa cremosa de curry con especias indias seleccionadas.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Pollo Biryani</span>
+                            <span class="menu-item-price">12,00€</span>
+                        </div>
+                        <p class="menu-item-desc">Arroz Basmati aromatizado cocinado con tierno pollo y especias tradicionales.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORY: HAMBURGUESAS -->
+        <div id="cat-hamburguesas" class="menu-cat-block" style="margin-top: 40px;">
+            <h3 class="menu-category-title"><i class="fa-solid fa-burger"></i> Hamburguesas XXL</h3>
+            <div class="menu-items-grid">
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Hamburguesa XXL Clásica</span>
+                            <span class="menu-item-price">4,50€</span>
+                        </div>
+                        <p class="menu-item-desc">Carne jugosa XXL con lechuga, tomate, cebolla, pepinillo y salsas.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Hamburguesa XXL Barbacoa</span>
+                            <span class="menu-item-price">6,00€</span>
+                        </div>
+                        <p class="menu-item-desc">Carne XXL con salsa barbacoa, bacon crujiente y jamón.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Menú 2 Hamburguesas XXL</span>
+                            <span class="menu-item-price">13,00€</span>
+                        </div>
+                        <p class="menu-item-desc">2 Hamburguesas XXL + Ración de Patatas + 2 Latas de bebida.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFO & CONTACT SECTION -->
+    <section id="horario" class="info-section">
+        <div class="info-box">
+            <h3><i class="fa-solid fa-clock"></i> Horario de Apertura</h3>
+            <ul class="schedule-list">
+                <li><span>Lunes:</span> <strong>18:00h - 00:00h</strong></li>
+                <li><span>Martes a Jueves:</span> <strong>12:00h - 16:30h | 19:00h - 00:00h</strong></li>
+                <li><span>Viernes y Sábados:</span> <strong>12:00h - 02:00h</strong></li>
+                <li><span>Domingos y Festivos:</span> <strong>12:00h - 00:00h</strong></li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h3><i class="fa-solid fa-truck"></i> Pedidos a Domicilio</h3>
+            <div class="contact-details">
+                <p><i class="fa-solid fa-phone"></i> <strong>Teléfonos:</strong> 948 029 045 / 617 673 946</p>
+                <p><i class="fa-solid fa-location-dot"></i> <strong>Dirección:</strong> c/ Karrobide, 21. 31610 Villava (Navarra)</p>
+                <p><i class="fa-solid fa-euro-sign"></i> <strong>Condiciones:</strong> Servicio a domicilio por solo 1 € por pedido. Pedido mínimo 10 €.</p>
+                <p><i class="fa-solid fa-credit-card"></i> <strong>Formas de pago:</strong> Se admite pago con TARJETA en local y domicilio.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Villava Döner Kebab</div>
+            <p>Pizzería, Comida India & Hamburguesería en Villava (Navarra)</p>
+        </div>
+        <div class="footer-copy">
+            &copy; 2026 Villava Döner Kebab. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <!-- Floating Call Button -->
+    <a href="tel:948029045" class="floating-call" title="Llamar para hacer pedido">
+        <i class="fa-solid fa-phone"></i>
+    </a>
+
+    <!-- Interactive Script -->
+    <script>
+        function filterCategory(catId) {
+            const buttons = document.querySelectorAll('.cat-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const targetBlock = document.getElementById('cat-' + catId);
+            if(targetBlock) {
+                targetBlock.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    </script>
+</body>
+</html>
